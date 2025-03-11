@@ -1,9 +1,10 @@
 import { Circle, Img, Layout, makeScene2D, Rect, Txt } from '@motion-canvas/2d';
-import { Color, createRef, easeInOutCubic, tween } from '@motion-canvas/core';
+import { createRef } from '@motion-canvas/core';
 import iPhone11Mockup from '/src/images/iphone-mockup.png';
 import iPhoneSafariExample from '/src/images/iphone-11-safari-example.jpeg';
 import iPhoneSafariExample2 from '/src/images/iphone-11-safari-example2.jpeg';
 import { IPhone11SafariMockup } from '../lib/IPhone11SafariMockup/IPhone11SafariMockup';
+import { TouchGestureIndicator } from '../lib/TouchGestureIndicator';
 
 // example of how box shadows are drawn
 //
@@ -15,6 +16,7 @@ export default makeScene2D(function*(view) {
 
   const mockup = createRef<IPhone11SafariMockup>();
   const scrollable = createRef<Layout>();
+  const touchIndicator = createRef<TouchGestureIndicator>();
 
   view.add(<>
     <Rect height={2100} width={3733} fill={'#3c3c3c'} />
@@ -32,6 +34,8 @@ export default makeScene2D(function*(view) {
         <Rect height={240} fill={'#fb8500'} />
       </Layout>
     </IPhone11SafariMockup>
+
+    <TouchGestureIndicator ref={touchIndicator} />
   </>);
 
   //yield*
@@ -45,5 +49,8 @@ export default makeScene2D(function*(view) {
   //    );
   //  });
 
-  yield* scrollable().position.y(-600, 2);
+  yield* touchIndicator().tap(0.5, [700, 0]);
+  yield* touchIndicator().tap(1, [700, 200]);
+  yield* touchIndicator().tap(2);
+  //yield* scrollable().position.y(-600, 2);
 });
