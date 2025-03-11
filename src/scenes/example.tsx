@@ -1,4 +1,4 @@
-import { Circle, Img, makeScene2D, Rect, Txt } from '@motion-canvas/2d';
+import { Circle, Img, Layout, makeScene2D, Rect, Txt } from '@motion-canvas/2d';
 import { Color, createRef, easeInOutCubic, tween } from '@motion-canvas/core';
 import iPhone11Mockup from '/src/images/iphone-mockup.png';
 import iPhoneSafariExample from '/src/images/iphone-11-safari-example.jpeg';
@@ -13,19 +13,24 @@ import { IPhone11SafariMockup } from '../lib/IPhone11SafariMockup/IPhone11Safari
 export default makeScene2D(function*(view) {
   // Create your animations here
 
-  const circle = createRef<Circle>();
   const mockup = createRef<IPhone11SafariMockup>();
+  const scrollable = createRef<Layout>();
 
   view.add(<>
     <Rect height={2100} width={3733} fill={'#3c3c3c'} />
     <IPhone11SafariMockup ref={mockup}>
-      {/*
-      <Img src={iPhoneSafariExample2} height={1792} />
-
-			<Rect height={1792} width={828} fill={'white'}>
-                        </Rect>
-                        */}
-      <Circle ref={circle} size={320} fill={'lightseagreen'} />
+      <Layout ref={scrollable} direction={'column'} width={960} gap={40} layout>
+        <Rect height={240} fill={'#8ecae6'} />
+        <Rect height={240} fill={'#219ebc'} />
+        <Rect height={240} fill={'#023047'} />
+        <Rect height={240} fill={'#ffb703'} />
+        <Rect height={240} fill={'#fb8500'} />
+        <Rect height={240} fill={'#8ecae6'} />
+        <Rect height={240} fill={'#219ebc'} />
+        <Rect height={240} fill={'#023047'} />
+        <Rect height={240} fill={'#ffb703'} />
+        <Rect height={240} fill={'#fb8500'} />
+      </Layout>
     </IPhone11SafariMockup>
   </>);
 
@@ -40,5 +45,5 @@ export default makeScene2D(function*(view) {
   //    );
   //  });
 
-  yield* circle().scale(2, 2).to(1, 2);
+  yield* scrollable().position.y(-600, 2);
 });

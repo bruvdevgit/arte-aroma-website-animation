@@ -2,6 +2,7 @@ import { ColorSignal, PossibleColor, SignalValue } from '@motion-canvas/core';
 import {
 	Circle,
 	Img,
+	Layout,
 	Node,
 	NodeProps,
 	Rect,
@@ -41,8 +42,14 @@ export class IPhone11SafariMockup extends Node {
 			...props,
 		});
 
-		this.add(<>
+		const newRoot = <Rect clip={true} size={[828, 1848]} />;
+		const backdrop = <Rect fill={'white'} size={[828, 1848]} />;
 
+		newRoot.children(props.children);
+		newRoot.insert(backdrop);
+		this.children(newRoot)
+
+		this.add(<>
 			{/*
 			*/}
 			<Rect fill={this.statusBarColor}
@@ -78,6 +85,7 @@ export class IPhone11SafariMockup extends Node {
 			<Img src={tabsIcon} width={33} position={[-306, 689]} />
 
 			<Rect height={10} width={294} fill={'black'}
+				opacity={0.8}
 				position={[0, 875]}
 				radius={25} />
 
