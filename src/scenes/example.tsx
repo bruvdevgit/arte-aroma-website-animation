@@ -35,7 +35,7 @@ export default makeScene2D(function*(view) {
       </Layout>
     </IPhone11SafariMockup>
 
-    <TouchGestureIndicator ref={touchIndicator} />
+    <TouchGestureIndicator isDevMode={true} ref={touchIndicator} color={'black'} />
   </>);
 
   //yield*
@@ -49,8 +49,48 @@ export default makeScene2D(function*(view) {
   //    );
   //  });
 
-  yield* touchIndicator().tap(0.5, [700, 0]);
-  yield* touchIndicator().tap(1, [700, 200]);
-  yield* touchIndicator().tap(2);
+  yield* touchIndicator().tap(1, [0, 0]);
+  // swipe down
+  yield* touchIndicator().color('#f94144', 0);
+  yield* touchIndicator().drag([0, 400], 4, [0, 0],);
+
+  // swipe down-right-wardly
+  yield* touchIndicator().color('#f3722c', 0);
+  yield* touchIndicator().drag([900, 400], 4, [0, 0],);
+
+  // swipe right-wardly
+  yield* touchIndicator().color('#f8961e', 0);
+  yield* touchIndicator().drag([400, 0], 4, [0, 0],);
+
+  // swipe up-right-wardly
+  yield* touchIndicator().color('#f9844a', 0);
+  yield* touchIndicator().drag([600, -400], 4, [0, 0],);
+
+  // swipe up
+  yield* touchIndicator().color('#90be6d', 0);
+  yield* touchIndicator().drag([0, -400], 4, [0, 0],);
+
+  // swipe up-left-wardly
+  yield* touchIndicator().color('#f9c74f', 0);
+  yield* touchIndicator().drag([-400, -600], 4, [0, 0],);
+
+  // swipe left-wardly
+  yield* touchIndicator().color('#43aa8b', 0);
+  yield* touchIndicator().drag([-400, 0], 4, [0, 0],);
+
+  // swipe down-left-wardly
+  yield* touchIndicator().color('#4d908e', 0);
+  yield* touchIndicator().drag([-400, 600], 4, [0, 0],);
+
+
+
+  //// swipe down-right-wardly
+  //yield* touchIndicator().color('#43aa8b', 0);
+  //yield* touchIndicator().drag([900, 400], 4, [600, 0],);
+
+
+  //yield* touchIndicator().tap(1, [700, 200]);
+  //yield* touchIndicator().tap(2);
+  //
   //yield* scrollable().position.y(-600, 2);
 });
