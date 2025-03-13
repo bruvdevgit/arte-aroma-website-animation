@@ -1,5 +1,4 @@
 import {
-	Circle,
 	Node,
 	NodeProps,
 	Rect,
@@ -8,34 +7,18 @@ import {
 	signal,
 } from '@motion-canvas/2d';
 import {
-	Color,
 	ColorSignal,
-	DEG2RAD,
 	PossibleColor,
 	RAD2DEG,
 	SignalValue,
 	SimpleSignal,
 	ThreadGenerator,
 	all,
-	chain,
-	createEffect,
 	createRef,
-	createSignal,
-	delay,
-	easeInCirc,
-	easeInCubic,
-	easeInOutCubic,
 	easeInOutExpo,
-	easeInOutQuint,
-	easeOutCirc,
-	easeOutCubic,
-	easeOutQuint,
-	linear,
 	map,
 	sequence,
 	tween,
-	useLogger,
-	waitFor,
 } from '@motion-canvas/core';
 import { calculateRotationFromSouthIs0Rad, mapValueToSubrange } from './utils';
 
@@ -130,7 +113,13 @@ export class TouchGestureIndicator extends Node {
 	}
 
 
-	public *drag(to: [number, number], duration: number = 0.5, from?: [number, number],) {
+	public *drag(args: DragFnArgs) {
+		let {
+			fromPosition: from,
+			toPosition: to,
+			totalAnimDuration: duration = 0.5,
+		} = args;
+
 		if (from == null) {
 			const [x, y] = this.position();
 			from = [x, y];
@@ -174,5 +163,10 @@ export class TouchGestureIndicator extends Node {
 					this.outerCircle().position.y(sohcahtoaHypotenuse);
 			}));
 	}
+}
 
+export interface DragFnArgs {
+	fromPosition?: [number, number];
+	toPosition: [number, number];
+	totalAnimDuration?: number;
 }
