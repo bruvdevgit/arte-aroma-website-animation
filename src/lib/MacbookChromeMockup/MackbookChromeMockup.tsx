@@ -48,37 +48,34 @@ export class MacbookChromeMockup extends Node {
 		const [screenSizeX, screenSizeY] = [
 			getWidthFromHeight(height - totalFrameHeight),
 			height - totalFrameHeight];
-		const [screenPositionX, screenPositionY] = [4, -37];
+		//const [screenPositionX, screenPositionY] = [4, -37];
+		const [screenPositionX, screenPositionY] = [3, -55];
 
-		const newRoot = <Rect clip={true}
+		const screen = <Rect fill={'white'} clip={true}
 			position={[screenPositionX, screenPositionY]}
 			size={[screenSizeX, screenSizeY]} />;
-		const backdrop = <Rect fill={'white'}
-			position={[screenPositionX, screenPositionY]}
-			size={[screenSizeX, screenSizeY]} />;
 
-		newRoot.children(props.children);
-		newRoot.insert(backdrop);
-		this.children(newRoot)
-
-		this.add(<>
-			<Img src={chromeHeaderLight} width={screenSizeX - 4} position={[screenPositionX + 2, -777]} />
-
-			{/*
-				*/}
+		screen.add(<>
+			<Img src={chromeHeaderLight} width={screenSizeX - 4}
+				position={[screenPositionX, -723]} />
 
 			<Txt fontFamily={'SF Pro Display'}
-				left={[-887, -812]}
+				left={[-887, -758]}
 				fontSize={36} fill={'#323232'}
 			>UJ's favourite on campus</Txt>
 
 			<Txt fontFamily={'SF Pro Display'}
-				left={[-720, -723]}
+				left={[-720, -668]}
 				fontSize={42} fill={'#323232'}
 			>https://theartearoma.com</Txt>
+		</>);
 
+		screen.add(props.children);
+
+		this.children(screen)
+
+		this.add(<>
 			<Img src={macbookFrame} height={height} />
-
 		</>);
 	}
 
