@@ -23,17 +23,11 @@ import {
 import { calculateRotationFromSouthIs0Rad, mapValueToSubrange } from './utils';
 
 export interface TouchGestureIndicatorProps extends NodeProps {
-	isTouchDown?: SignalValue<boolean>;
 	color?: SignalValue<PossibleColor>;
 	isDevMode?: boolean;
 }
 
 export class TouchGestureIndicator extends Node {
-
-	@initial(false)
-	@signal()
-	public declare readonly isTouchDown: SimpleSignal<boolean, this>;
-
 	@initial('white')
 	@colorSignal()
 	public declare readonly color: ColorSignal<this>;
