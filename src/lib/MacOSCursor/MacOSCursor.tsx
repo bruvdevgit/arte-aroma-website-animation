@@ -43,12 +43,6 @@ export class MacOSCursor extends Node {
 		this.add(<Img ref={this.image} src={normalImage} width={190} />);
 	}
 
-	public *pointTo(
-		absolutePosition: [number, number],
-		duration: number = 1) {
-		yield* this.absolutePosition(absolutePosition, duration);
-	}
-
 	public *changeType(type: CursorType) {
 		if (type == CursorType.Normal) {
 			this.image().src(normalImage);

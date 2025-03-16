@@ -1,4 +1,12 @@
-import { ColorSignal, createRef, PossibleColor, SignalValue } from '@motion-canvas/core';
+import {
+	ColorSignal,
+	createRef,
+	easeInOutCubic,
+	PossibleColor,
+	SignalValue,
+	tween,
+	Vector2
+} from '@motion-canvas/core';
 import {
 	Img,
 	Node,
@@ -87,7 +95,14 @@ export class MacbookChromeMockup extends Node {
 	public *pointMouseCursorTo(
 		absolutePosition: [number, number],
 		duration: number = 1) {
-		yield* this.mouseCursor().pointTo(absolutePosition, duration);
+		const startPosition = this.mouseCursor().absolutePosition();
+		yield* tween(duration, value => {
+			this.mouseCursor().absolutePosition(Vector2.lerp(
+				startPosition,
+				new Vector2(absolutePosition),
+				easeInOutCubic(value),
+			))
+		});
 	}
 
 }

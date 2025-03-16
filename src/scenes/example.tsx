@@ -1,5 +1,5 @@
 import { makeScene2D, Rect } from '@motion-canvas/2d';
-import { all, createRef } from '@motion-canvas/core';
+import { all, createRef, easeInOutCubic } from '@motion-canvas/core';
 import iPhone11Mockup from '/src/images/iphone-mockup.png';
 import iPhoneSafariExample from '/src/images/iphone-11-safari-example.jpeg';
 import iPhoneSafariExample2 from '/src/images/iphone-11-safari-example2.jpeg';
@@ -40,9 +40,9 @@ export default makeScene2D(function*(view) {
   </>);
 
   yield* all(
-    cursor().pointTo(pos([1077, -743]), 3),
+    cursor().absolutePosition(pos([1077, -743]), 3),
     mockup().pointMouseCursorTo(pos([1077, -743]), 3),
   );
   yield* cursor().changeType(CursorType.Link);
-  yield* cursor().pointTo(pos([1186, -717]), 0.5);
+  yield* cursor().absolutePosition(pos([1186, -717]), 0.5);
 });
