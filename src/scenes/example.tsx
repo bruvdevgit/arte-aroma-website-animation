@@ -1,5 +1,5 @@
 import { makeScene2D, Rect } from '@motion-canvas/2d';
-import { createRef } from '@motion-canvas/core';
+import { all, createRef } from '@motion-canvas/core';
 import iPhone11Mockup from '/src/images/iphone-mockup.png';
 import iPhoneSafariExample from '/src/images/iphone-11-safari-example.jpeg';
 import iPhoneSafariExample2 from '/src/images/iphone-11-safari-example2.jpeg';
@@ -27,7 +27,7 @@ function pos([x, y]: [number, number]
 export default makeScene2D(function*(view) {
   // Create your animations here
 
-  const mockup = createRef<IPhone11SafariMockup>();
+  const mockup = createRef<MacbookChromeMockup>();
   const touchIndicator = createRef<TouchGestureIndicator>();
   const cursor = createRef<MacOSCursor>();
 
@@ -39,7 +39,10 @@ export default makeScene2D(function*(view) {
     <MacOSCursor ref={cursor} position={[0, 0]} />
   </>);
 
-  yield* cursor().pointTo(pos([1077, -743]), 3);
+  yield* all(
+    cursor().pointTo(pos([1077, -743]), 3),
+    mockup().pointMouseCursorTo(pos([1077, -743]), 3),
+  );
   yield* cursor().changeType(CursorType.Link);
   yield* cursor().pointTo(pos([1186, -717]), 0.5);
 });

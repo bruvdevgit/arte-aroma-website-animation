@@ -1,4 +1,4 @@
-import { ColorSignal, PossibleColor, SignalValue } from '@motion-canvas/core';
+import { ColorSignal, createRef, PossibleColor, SignalValue } from '@motion-canvas/core';
 import {
 	Img,
 	Node,
@@ -12,6 +12,7 @@ import {
 
 import macbookFrame from './images/macbook-laptop-frame.png';
 import chromeHeaderLight from './images/chrome-header-light.svg';
+import { MacOSCursor } from '../MacOSCursor/MacOSCursor';
 
 export interface MacbookChromeMockupProps extends NodeProps {
 	statusBarColor?: SignalValue<PossibleColor>;
@@ -21,6 +22,9 @@ export class MacbookChromeMockup extends Node {
 	@initial('white')
 	@colorSignal()
 	public declare readonly statusBarColor: ColorSignal<this>;
+
+
+	private readonly mouseCursor = createRef<MacOSCursor>();
 
 	public constructor(props?: MacbookChromeMockupProps) {
 		super({
@@ -48,7 +52,6 @@ export class MacbookChromeMockup extends Node {
 		const [screenSizeX, screenSizeY] = [
 			getWidthFromHeight(height - totalFrameHeight),
 			height - totalFrameHeight];
-		//const [screenPositionX, screenPositionY] = [4, -37];
 		const [screenPositionX, screenPositionY] = [3, -55];
 
 		const screen = <Rect fill={'white'} clip={true}
@@ -68,6 +71,7 @@ export class MacbookChromeMockup extends Node {
 				left={[-720, -668]}
 				fontSize={42} fill={'#323232'}
 			>https://theartearoma.com</Txt>
+			<MacOSCursor ref={this.mouseCursor} />
 		</>);
 
 		screen.add(props.children);
@@ -77,6 +81,13 @@ export class MacbookChromeMockup extends Node {
 		this.add(<>
 			<Img src={macbookFrame} height={height} />
 		</>);
+	}
+
+
+	public *pointMouseCursorTo(
+		absolutePosition: [number, number],
+		duration: number = 1) {
+		yield* this.mouseCursor().pointTo(absolutePosition, duration);
 	}
 
 }
