@@ -1,5 +1,5 @@
-import { Img, Node, nodeName, NodeProps } from "@motion-canvas/2d";
-import { createRef } from "@motion-canvas/core";
+import { Img, Node, nodeName, NodeProps, Shape } from "@motion-canvas/2d";
+import { createRef, easeInOutCubic, tween, Vector2 } from "@motion-canvas/core";
 
 import normalImage from './icons/Normal-centered.png';
 import linkImage from './icons/Link-centered.png';
@@ -55,10 +55,25 @@ export class MacOSPointer extends Node {
 		}
 	}
 
+	public *pointTo(absolutePosition: [number, number],
+		duration: number = 1) {
+		const startPosition = this.absolutePosition();
+		yield* tween(duration, value => {
+			this.absolutePosition(Vector2.lerp(
+				startPosition,
+				new Vector2(absolutePosition),
+				easeInOutCubic(value),
+			))
+		});
+	}
+
+	//public registerChangeCursorOnHover(shape: Shape){
+	//}
+
 }
 
 // - changes arrow to hand on hover
-// - registerPointerCursorOnHover(`Shape` component, CursorType.Link)
+// - registerChangeCursorOnHover(`Shape` component, CursorType.Link)
 // PointerHoverController
 //
 

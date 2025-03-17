@@ -31,7 +31,6 @@ export class MacbookChromeMockup extends Node {
 	@colorSignal()
 	public declare readonly statusBarColor: ColorSignal<this>;
 
-
 	private readonly mouseCursor = createRef<MacOSPointer>();
 
 	public constructor(props?: MacbookChromeMockupProps) {
@@ -92,17 +91,11 @@ export class MacbookChromeMockup extends Node {
 	}
 
 
+	//TODO: rename to pointMousePointerTo
 	public *pointMouseCursorTo(
 		absolutePosition: [number, number],
 		duration: number = 1) {
-		const startPosition = this.mouseCursor().absolutePosition();
-		yield* tween(duration, value => {
-			this.mouseCursor().absolutePosition(Vector2.lerp(
-				startPosition,
-				new Vector2(absolutePosition),
-				easeInOutCubic(value),
-			))
-		});
+		yield* this.mouseCursor().pointTo(absolutePosition, duration);
 	}
 
 }
