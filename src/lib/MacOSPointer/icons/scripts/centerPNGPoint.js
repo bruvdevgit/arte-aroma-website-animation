@@ -8,13 +8,13 @@ async function centerPointInImage(inputPath, outputPath, pointX, pointY) {
 		const metadata = await sharp(inputPath).metadata();
 		const { width, height } = metadata;
 
-		const leftPadding = width - 2 * pointX;
+		//const leftPadding = width - 2 * pointX;
+		const leftPadding = 0;
 		const topPadding = height - 2 * pointY;
 
 		// Calculate new canvas size
-		//const newWidth = Math.max(width, 2 * pointX);
-		//const newHeight = Math.max(height, 2 * pointY);
-		const newWidth = leftPadding + width;
+		//const newWidth = leftPadding + width;
+		const newWidth = 2 * width - 2 * (width - pointX);
 		const newHeight = topPadding + height;
 
 		// Calculate position to place the original image
@@ -42,9 +42,9 @@ async function centerPointInImage(inputPath, outputPath, pointX, pointY) {
 }
 
 // Example usage
-const inputImagePath = path.join(__dirname, '../Link.png');
-const outputImagePath = path.join(__dirname, '../Link-centered.png');
-const pointX = 56; // X coordinate to center
-const pointY = 32; // Y coordinate to center
+const inputImagePath = path.join(__dirname, '../Alternate.png');
+const outputImagePath = path.join(__dirname, '../Alternate-centered.png');
+const pointX = 227; // X coordinate to center
+const pointY = 19; // Y coordinate to center
 
 centerPointInImage(inputImagePath, outputImagePath, pointX, pointY);

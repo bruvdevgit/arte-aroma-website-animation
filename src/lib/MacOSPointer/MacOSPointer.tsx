@@ -1,8 +1,28 @@
-import { Img, initial, Layout, Node, nodeName, NodeProps, signal, } from "@motion-canvas/2d";
-import { createDeferredEffect, createEffect, createRef, easeInOutCubic, SimpleSignal, tween, useLogger, Vector2 } from "@motion-canvas/core";
+import { Img, Layout, Node, nodeName, NodeProps, } from "@motion-canvas/2d";
+import { createRef, easeInOutCubic, tween, Vector2 } from "@motion-canvas/core";
 
 import normalImage from './icons/Normal-centered.png';
 import linkImage from './icons/Link-centered.png';
+import personImage from './icons/Person-centered.png';
+import pinImage from './icons/Pin-centered.png';
+import panImage from './icons/Pan-centered.png';
+import closeHandImage from './icons/Closehand-centered.png';
+import precisionImage from './icons/Precision.png';
+import textImage from './icons/Text.png';
+import verticalResizeImage from './icons/Vertical-Resize.png';
+import diagonalResize1Image from './icons/Diagonal-Resize-1.png';
+import diagonalResize2Image from './icons/Diagonal-Resize-2.png';
+import zoomInImage from './icons/Zoom-in-centered.png';
+import zoomOutImage from './icons/Zoom-out-centered.png';
+import unavailableImage from './icons/Unavailable-centered.png';
+import helpImage from './icons/Help-centered.png';
+import horizontalResizeImage from './icons/Horizontal-Resize.png';
+import moveImage from './icons/Move.png';
+import busyImage from './icons/Busy.gif';
+import handwritingImage from './icons/Handwriting-centered.png';
+import alternateImage from './icons/Alternate-centered.png';
+
+
 import { pointIsOnNode } from "../utils";
 
 export enum CursorType {
@@ -58,6 +78,60 @@ export class MacOSPointer extends Node {
 		}
 		else if (type == CursorType.Link) {
 			this.image().src(linkImage);
+		}
+		else if (type == CursorType.Person) {
+			this.image().src(personImage);
+		}
+		else if (type == CursorType.Pin) {
+			this.image().src(pinImage);
+		}
+		else if (type == CursorType.Pan) {
+			this.image().src(panImage);
+		}
+		else if (type == CursorType.Closehand) {
+			this.image().src(closeHandImage);
+		}
+		else if (type == CursorType.Precision) {
+			this.image().src(precisionImage);
+		}
+		else if (type == CursorType.Text) {
+			this.image().src(textImage);
+		}
+		else if (type == CursorType.VerticalResize) {
+			this.image().src(verticalResizeImage);
+		}
+		else if (type == CursorType.DiagonalResize1) {
+			this.image().src(diagonalResize1Image);
+		}
+		else if (type == CursorType.DiagonalResize2) {
+			this.image().src(diagonalResize2Image);
+		}
+		else if (type == CursorType.ZoomIn) {
+			this.image().src(zoomInImage);
+		}
+		else if (type == CursorType.ZoomOut) {
+			this.image().src(zoomOutImage);
+		}
+		else if (type == CursorType.Unavailable) {
+			this.image().src(unavailableImage);
+		}
+		else if (type == CursorType.Help) {
+			this.image().src(helpImage);
+		}
+		else if (type == CursorType.HorizontalResize) {
+			this.image().src(horizontalResizeImage);
+		}
+		else if (type == CursorType.Move) {
+			this.image().src(moveImage);
+		}
+		else if (type == CursorType.Busy) {
+			this.image().src(busyImage);
+		}
+		else if (type == CursorType.Handwriting) {
+			this.image().src(handwritingImage);
+		}
+		else if (type == CursorType.Alternate) {
+			this.image().src(alternateImage);
 		}
 		else {
 			throw RangeError(`Tried changing to un-accounted-for CursorType: ${type}`);

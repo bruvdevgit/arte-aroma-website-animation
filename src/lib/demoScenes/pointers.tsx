@@ -1,8 +1,7 @@
 import { makeScene2D, Rect } from '@motion-canvas/2d';
 import { createRef, Reference } from '@motion-canvas/core';
-import { TouchGestureIndicator } from '../lib/TouchGestureIndicator';
-import { MacbookChromeMockup } from '../lib/MacbookChromeMockup/MackbookChromeMockup';
-import { CursorType, MacOSPointer } from '../lib/MacOSPointer/MacOSPointer';
+import { MacbookChromeMockup } from '../MacbookChromeMockup/MackbookChromeMockup';
+import { CursorType, MacOSPointer } from '../MacOSPointer/MacOSPointer';
 
 // example of how box shadows are drawn
 //
@@ -24,7 +23,6 @@ export default makeScene2D(function*(view) {
   // Create your animations here
 
   const mockup = createRef<MacbookChromeMockup>();
-  const touchIndicator = createRef<TouchGestureIndicator>();
 
   const cursorTypeExamples
     : { cursorType: CursorType, ref: Reference<Rect>, position: [number, number] }[] = [
@@ -55,7 +53,6 @@ export default makeScene2D(function*(view) {
   view.add(<>
     <Rect height={2100} width={3733} fill={'#3c3c3c'} />
     <MacbookChromeMockup ref={mockup}>
-      <TouchGestureIndicator ref={touchIndicator} color={'black'} />
       {cursorTypeExamples.map(example => (
         <Rect
           ref={example.ref}
