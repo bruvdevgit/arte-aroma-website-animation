@@ -3,12 +3,14 @@ import {
 	createRef,
 	easeInOutCubic,
 	PossibleColor,
+	Reference,
 	SignalValue,
 	tween,
 	Vector2
 } from '@motion-canvas/core';
 import {
 	Img,
+	Layout,
 	Node,
 	NodeProps,
 	Rect,
@@ -20,7 +22,7 @@ import {
 
 import macbookFrame from './images/macbook-laptop-frame.png';
 import chromeHeaderLight from './images/chrome-header-light.svg';
-import { MacOSPointer } from '../MacOSPointer/MacOSPointer';
+import { CursorType, MacOSPointer } from '../MacOSPointer/MacOSPointer';
 
 export interface MacbookChromeMockupProps extends NodeProps {
 	statusBarColor?: SignalValue<PossibleColor>;
@@ -65,6 +67,8 @@ export class MacbookChromeMockup extends Node {
 			position={[screenPositionX, screenPositionY]}
 			size={[screenSizeX, screenSizeY]} />;
 
+		screen.add(props.children);
+
 		screen.add(<>
 			<Img src={chromeHeaderLight} width={screenSizeX - 4}
 				position={[screenPositionX, -723]} />
@@ -81,7 +85,6 @@ export class MacbookChromeMockup extends Node {
 			<MacOSPointer ref={this.mouseCursor} />
 		</>);
 
-		screen.add(props.children);
 
 		this.children(screen)
 
@@ -96,6 +99,13 @@ export class MacbookChromeMockup extends Node {
 		absolutePosition: [number, number],
 		duration: number = 1) {
 		yield* this.mouseCursor().pointTo(absolutePosition, duration);
+	}
+
+
+	public registerChangePointerCursorOnHover(
+		shape: Layout, cursorType: CursorType) {
+		this.mouseCursor()
+			.registerChangeCursorOnHover(shape, cursorType);
 	}
 
 }

@@ -1,3 +1,4 @@
+import { Layout, Node } from '@motion-canvas/2d';
 
 // This utility function is short, but it was not easy to derive.
 //
@@ -19,6 +20,9 @@
 // But if ever
 // -> x<0 or x<a then f(x) = 0
 // -> x>1 or x>b then f(x) = 1
+
+import { Vector2 } from "@motion-canvas/core";
+
 //
 export function mapValueToSubrange(x: number, [a, b]: [number, number]) {
   if (x < 0 || x < a) return 0;
@@ -58,3 +62,35 @@ export function calculateRotationFromSouthIs0Rad(xMove: number, yMove: number) {
 
   return Math.abs(rotationAngle);
 }
+
+export function pointIsOnNode(
+  point: Vector2, container: {
+    absolutePosition: Vector2,
+    size: Vector2,
+  }): boolean {
+  const containerAbsolutePosition = container.absolutePosition;
+  const containerSize = container.size;
+
+  const containerXMin = containerAbsolutePosition.x - containerSize.x / 2;
+  if (containerXMin > point.x) {
+    return false;
+  }
+
+  const containerXMax = containerAbsolutePosition.x + containerSize.x / 2;
+  if (containerXMax < point.x) {
+    return false;
+  }
+
+  const containerYMin = containerAbsolutePosition.y - containerSize.y / 2;
+  if (containerYMin > point.y) {
+    return false;
+  }
+
+  const containerYMax = containerAbsolutePosition.y + containerSize.y / 2;
+  if (containerYMax < point.y) {
+    return false;
+  }
+
+  return true;
+}
+

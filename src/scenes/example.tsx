@@ -30,19 +30,28 @@ export default makeScene2D(function*(view) {
   const mockup = createRef<MacbookChromeMockup>();
   const touchIndicator = createRef<TouchGestureIndicator>();
   const cursor = createRef<MacOSPointer>();
+  const buttonExample = createRef<Rect>();
+  const buttonExample2 = createRef<Rect>();
 
   view.add(<>
     <Rect height={2100} width={3733} fill={'#3c3c3c'} />
     <MacbookChromeMockup ref={mockup}>
       <TouchGestureIndicator ref={touchIndicator} color={'black'} />
+      <Rect ref={buttonExample} position={[284, -311]} size={[400, 400]} fill={'red'} />
+      <Rect ref={buttonExample2} size={[30, 30]} fill={'blue'} />
     </MacbookChromeMockup>
     <MacOSPointer ref={cursor} position={[0, 0]} />
   </>);
+
+  mockup().registerChangePointerCursorOnHover(buttonExample(), CursorType.Link);
+  mockup().registerChangePointerCursorOnHover(buttonExample2(), CursorType.Link);
+
 
   yield* all(
     cursor().absolutePosition(pos([1077, -743]), 3),
     mockup().pointMouseCursorTo(pos([1077, -743]), 3),
   );
-  yield* cursor().changeType(CursorType.Link);
+  cursor().changeCursor(CursorType.Link);
+  yield;
   yield* cursor().absolutePosition(pos([1186, -717]), 0.5);
 });
