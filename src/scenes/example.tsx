@@ -6,7 +6,7 @@ import iPhoneSafariExample2 from '/src/images/iphone-11-safari-example2.jpeg';
 import { IPhone11SafariMockup } from '../lib/IPhone11SafariMockup/IPhone11SafariMockup';
 import { TouchGestureIndicator } from '../lib/TouchGestureIndicator';
 import { MacbookChromeMockup } from '../lib/MacbookChromeMockup/MackbookChromeMockup';
-import { CursorType, MacOSCursor } from '../lib/MacOSCursor/MacOSCursor';
+import { CursorType, MacOSPointer } from '../lib/MacOSPointer/MacOSPointer';
 
 // example of how box shadows are drawn
 //
@@ -29,14 +29,14 @@ export default makeScene2D(function*(view) {
 
   const mockup = createRef<MacbookChromeMockup>();
   const touchIndicator = createRef<TouchGestureIndicator>();
-  const cursor = createRef<MacOSCursor>();
+  const cursor = createRef<MacOSPointer>();
 
   view.add(<>
     <Rect height={2100} width={3733} fill={'#3c3c3c'} />
     <MacbookChromeMockup ref={mockup}>
       <TouchGestureIndicator ref={touchIndicator} color={'black'} />
     </MacbookChromeMockup>
-    <MacOSCursor ref={cursor} position={[0, 0]} />
+    <MacOSPointer ref={cursor} position={[0, 0]} />
   </>);
 
   yield* all(

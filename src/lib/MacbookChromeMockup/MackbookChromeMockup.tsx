@@ -20,7 +20,7 @@ import {
 
 import macbookFrame from './images/macbook-laptop-frame.png';
 import chromeHeaderLight from './images/chrome-header-light.svg';
-import { MacOSCursor } from '../MacOSCursor/MacOSCursor';
+import { MacOSPointer } from '../MacOSPointer/MacOSPointer';
 
 export interface MacbookChromeMockupProps extends NodeProps {
 	statusBarColor?: SignalValue<PossibleColor>;
@@ -32,7 +32,7 @@ export class MacbookChromeMockup extends Node {
 	public declare readonly statusBarColor: ColorSignal<this>;
 
 
-	private readonly mouseCursor = createRef<MacOSCursor>();
+	private readonly mouseCursor = createRef<MacOSPointer>();
 
 	public constructor(props?: MacbookChromeMockupProps) {
 		super({
@@ -79,7 +79,7 @@ export class MacbookChromeMockup extends Node {
 				left={[-720, -668]}
 				fontSize={42} fill={'#323232'}
 			>https://theartearoma.com</Txt>
-			<MacOSCursor ref={this.mouseCursor} />
+			<MacOSPointer ref={this.mouseCursor} />
 		</>);
 
 		screen.add(props.children);

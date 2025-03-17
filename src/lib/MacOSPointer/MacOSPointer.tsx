@@ -28,14 +28,14 @@ export enum CursorType {
 	ZoomOut,
 }
 
-export interface MacOSCursorProps extends NodeProps {
+export interface MacOSPointerProps extends NodeProps {
 }
 
-@nodeName('MacOSCursor')
-export class MacOSCursor extends Node {
+@nodeName('MacOSPointer')
+export class MacOSPointer extends Node {
 	private readonly image = createRef<Img>();
 
-	public constructor(props?: MacOSCursorProps) {
+	public constructor(props?: MacOSPointerProps) {
 		super({
 			...props,
 		});
@@ -56,3 +56,13 @@ export class MacOSCursor extends Node {
 	}
 
 }
+
+// - changes arrow to hand on hover
+// - registerPointerCursorOnHover(`Shape` component, CursorType.Link)
+// PointerHoverController
+//
+
+
+// When the cursor is moving, it immediately switches to hover.
+// But, when the page is moving instead of the cursor, any
+// necessary switch to hover is determined after the move.
