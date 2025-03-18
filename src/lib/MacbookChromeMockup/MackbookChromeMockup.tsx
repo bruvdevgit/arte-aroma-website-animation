@@ -94,11 +94,10 @@ export class MacbookChromeMockup extends Node {
 	}
 
 
-	//TODO: rename to pointMousePointerTo
-	public *pointMouseCursorTo(
+	public *pointMouseCursorAt(
 		absolutePosition: [number, number],
 		duration: number = 1) {
-		yield* this.mouseCursor().pointTo(absolutePosition, duration);
+		yield* this.mouseCursor().pointAt(absolutePosition, duration);
 	}
 
 

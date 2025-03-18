@@ -72,7 +72,7 @@ export default makeScene2D(function*(view) {
   });
 
   for (const example of cursorTypeExamples) {
-    yield* mockup().pointMouseCursorTo(pos(example.position), 1);
+    yield* mockup().pointMouseCursorAt(pos(example.position), 1);
   }
 
 });

@@ -153,7 +153,7 @@ export class MacOSPointer extends Node {
 		}
 	}
 
-	public *pointTo(absolutePosition: [number, number],
+	public *pointAt(absolutePosition: [number, number],
 		duration: number = 1) {
 		const startPosition = this.absolutePosition();
 		yield* tween(duration, value => {
