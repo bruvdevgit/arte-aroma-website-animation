@@ -1,5 +1,5 @@
-import { Img, Layout, Node, nodeName, NodeProps, } from "@motion-canvas/2d";
-import { createRef, easeInOutCubic, tween, Vector2 } from "@motion-canvas/core";
+import { colorSignal, Img, initial, Layout, Node, nodeName, NodeProps, } from "@motion-canvas/2d";
+import { ColorSignal, createRef, easeInOutCubic, PossibleColor, SignalValue, tween, Vector2 } from "@motion-canvas/core";
 
 import normalImage from './icons/Normal-centered.png';
 import linkImage from './icons/Link-centered.png';
@@ -23,6 +23,7 @@ import alternateImage from './icons/Alternate-centered.png';
 
 
 import { pointIsOnNode } from "../utils";
+import { TouchGestureIndicator } from "../TouchGestureIndicator";
 
 export enum CursorType {
 	Alternate,
@@ -49,6 +50,7 @@ export enum CursorType {
 }
 
 export interface MacOSPointerProps extends NodeProps {
+	touchGestureIndicatorColor?: SignalValue<PossibleColor>;
 }
 
 interface CursorChangeRequest {
@@ -60,6 +62,11 @@ export class MacOSPointer extends Node {
 	private cursorChangeRequests: CursorChangeRequest[] = [];
 
 	private readonly image = createRef<Img>();
+	private readonly touchGestureIndicator = createRef<TouchGestureIndicator>();
+
+	@initial('black')
+	@colorSignal()
+	public declare readonly touchGestureIndicatorColor: ColorSignal<this>;
 
 	//private readonly unregisterEffectFns: (() => void)[] = [];
 
@@ -68,7 +75,12 @@ export class MacOSPointer extends Node {
 			...props,
 		});
 
-		this.add(<Img ref={this.image} src={normalImage} width={190} />);
+		this.add(<>
+			<Img ref={this.image} src={normalImage} width={190} />
+			<TouchGestureIndicator
+				ref={this.touchGestureIndicator}
+				color={this.touchGestureIndicatorColor} />
+		</>);
 	}
 
 	public changeCursor(type: CursorType) {
@@ -165,6 +177,10 @@ export class MacOSPointer extends Node {
 			this.absolutePosition(currentPosition);
 			this.conformCursorToChangeRequests();
 		});
+	}
+
+	public *click(duration: number = 0.5) {
+		yield* this.touchGestureIndicator().tap(duration);
 	}
 
 	public conformCursorToChangeRequests() {

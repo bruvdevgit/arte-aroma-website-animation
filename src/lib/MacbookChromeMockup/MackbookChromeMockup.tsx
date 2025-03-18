@@ -1,12 +1,8 @@
 import {
 	ColorSignal,
 	createRef,
-	easeInOutCubic,
 	PossibleColor,
-	Reference,
 	SignalValue,
-	tween,
-	Vector2
 } from '@motion-canvas/core';
 import {
 	Img,
@@ -82,7 +78,8 @@ export class MacbookChromeMockup extends Node {
 				left={[-720, -668]}
 				fontSize={42} fill={'#323232'}
 			>https://theartearoma.com</Txt>
-			<MacOSPointer ref={this.mouseCursor} />
+			<MacOSPointer touchGestureIndicatorColor={'#24282d'}
+				ref={this.mouseCursor} />
 		</>);
 
 
@@ -100,6 +97,12 @@ export class MacbookChromeMockup extends Node {
 		yield* this.mouseCursor().pointAt(absolutePosition, duration);
 	}
 
+	public *clickMouseCursorAt(
+		absolutePosition: [number, number],
+		duration: number = 1) {
+		yield* this.mouseCursor().pointAt(absolutePosition, duration);
+		yield* this.mouseCursor().click(0.4);
+	}
 
 	public registerChangePointerCursorOnHover(
 		shape: Layout, cursorType: CursorType) {

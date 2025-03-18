@@ -64,6 +64,9 @@ export default makeScene2D(function*(view) {
     </MacbookChromeMockup>
   </>);
 
+  yield* mockup().clickMouseCursorAt(pos([-366, -146]));
+  yield* mockup().clickMouseCursorAt(pos([-710, -269]));
+
   cursorTypeExamples.forEach(example => {
     mockup().registerChangePointerCursorOnHover(example.ref(), example.cursorType);
   });
