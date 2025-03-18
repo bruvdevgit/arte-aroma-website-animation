@@ -18,7 +18,6 @@ import unavailableImage from './icons/Unavailable-centered.png';
 import helpImage from './icons/Help-centered.png';
 import horizontalResizeImage from './icons/Horizontal-Resize.png';
 import moveImage from './icons/Move.png';
-import busyImage from './icons/Busy.gif';
 import handwritingImage from './icons/Handwriting-centered.png';
 import alternateImage from './icons/Alternate-centered.png';
 
@@ -75,63 +74,79 @@ export class MacOSPointer extends Node {
 	public changeCursor(type: CursorType) {
 		if (type == CursorType.Normal) {
 			this.image().src(normalImage);
+			this.image().width(190);
 		}
 		else if (type == CursorType.Link) {
 			this.image().src(linkImage);
+			this.image().width(170);
 		}
 		else if (type == CursorType.Person) {
 			this.image().src(personImage);
+			this.image().width(170);
 		}
 		else if (type == CursorType.Pin) {
 			this.image().src(pinImage);
+			this.image().width(170);
 		}
 		else if (type == CursorType.Pan) {
 			this.image().src(panImage);
+			this.image().width(170);
 		}
 		else if (type == CursorType.Closehand) {
 			this.image().src(closeHandImage);
+			this.image().width(170);
 		}
 		else if (type == CursorType.Precision) {
 			this.image().src(precisionImage);
+			this.image().width(110);
 		}
 		else if (type == CursorType.Text) {
 			this.image().src(textImage);
+			this.image().width(105);
 		}
 		else if (type == CursorType.VerticalResize) {
 			this.image().src(verticalResizeImage);
+			this.image().width(105);
 		}
 		else if (type == CursorType.DiagonalResize1) {
 			this.image().src(diagonalResize1Image);
+			this.image().width(110);
 		}
 		else if (type == CursorType.DiagonalResize2) {
 			this.image().src(diagonalResize2Image);
+			this.image().width(110);
 		}
 		else if (type == CursorType.ZoomIn) {
 			this.image().src(zoomInImage);
+			this.image().width(170);
 		}
 		else if (type == CursorType.ZoomOut) {
 			this.image().src(zoomOutImage);
+			this.image().width(170);
 		}
 		else if (type == CursorType.Unavailable) {
 			this.image().src(unavailableImage);
+			this.image().width(190);
 		}
 		else if (type == CursorType.Help) {
 			this.image().src(helpImage);
+			this.image().width(164);
 		}
 		else if (type == CursorType.HorizontalResize) {
 			this.image().src(horizontalResizeImage);
+			this.image().width(130);
 		}
 		else if (type == CursorType.Move) {
 			this.image().src(moveImage);
-		}
-		else if (type == CursorType.Busy) {
-			this.image().src(busyImage);
+			this.image().width(130);
 		}
 		else if (type == CursorType.Handwriting) {
 			this.image().src(handwritingImage);
+			this.image().width(130);
 		}
 		else if (type == CursorType.Alternate) {
 			this.image().src(alternateImage);
+			this.image().width(190);
 		}
 		else {
 			throw RangeError(`Tried changing to un-accounted-for CursorType: ${type}`);
