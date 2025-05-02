@@ -11,7 +11,7 @@
     "@motion-canvas/core": "^3.17.2",
     "@motion-canvas/2d": "^3.17.2",
     "@motion-canvas/ffmpeg": "^1.1.0",
-    "@to-motion-canvas/codegen": "^0.0.10"
+    "@to-motion-canvas/codegen": "^0.0.12"
   },
   "devDependencies": {
     "@motion-canvas/ui": "^3.17.2",

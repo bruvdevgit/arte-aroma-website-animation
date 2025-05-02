@@ -18,8 +18,8 @@ importers:
         specifier: ^1.1.0
         version: 1.1.1(@motion-canvas/core@3.17.2)(@motion-canvas/vite-plugin@3.17.2(vite@4.5.9))(vite@4.5.9)
       '@to-motion-canvas/codegen':
-        specifier: ^0.0.10
-        version: 0.0.10
+        specifier: ^0.0.12
+        version: 0.0.12
     devDependencies:
       '@motion-canvas/ui':
         specifier: ^3.17.2
@@ -320,8 +320,8 @@ packages:
     peerDependencies:
       preact: 10.x
 
-  '@to-motion-canvas/codegen@0.0.10':
-    resolution: {integrity: sha512-SIv3F/Z5Y+o1hD9h0wj8NG+5JFA/JeOin0Io+AIjtSs4h+UtFISp7h0AiR3+iGaR0fpZu3n4srvuowGRTF/nyg==}
+  '@to-motion-canvas/codegen@0.0.12':
+    resolution: {integrity: sha512-Cu++YdR+PeZ6aEzhKexyRGej7zaDp//QqwOYnB0lH7Lytr4qiqjkfhwpDp6LU9sVsJBAEGHcn39M+b8brkndGA==}
     hasBin: true
 
   '@to-motion-canvas/inkscape-svg@0.0.3':
@@ -932,7 +932,7 @@ snapshots:
       '@preact/signals-core': 1.8.0
       preact: 10.26.4
 
-  '@to-motion-canvas/codegen@0.0.10':
+  '@to-motion-canvas/codegen@0.0.12':
     dependencies:
       '@motion-canvas/2d': 3.17.2
       '@motion-canvas/core': 3.17.2
