@@ -1,0 +1,16 @@
+[[inkscapeSVGs]]
+[inkscapeSVGs.input]
+filePath= "./webpageDesigns/index-macbook.svg"
+[inkscapeSVGs.output]
+viewAdderFunctionName= "indexPageMacbook"
+directoryPath= "./src/inkscapeSVGGenerated"
+
+# We can't handle that file yet
+#
+# [[inkscapeSVGs]]
+# [inkscapeSVGs.input]
+# filePath= "./circles_1920_by_1080.svg"
+# [inkscapeSVGs.output]
+# viewAdderFunctionName= "circles1920By1080"
+# directoryPath= "./src/inkscapeSVGGenerated"
+#

@@ -13,3 +13,6 @@ dist
 *.njsproj
 *.sln
 *.sw?
+
+# svg-to-motion-canvas
+src/inkscapeSVGGenerated

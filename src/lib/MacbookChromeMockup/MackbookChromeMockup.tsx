@@ -22,6 +22,7 @@ import { CursorType, MacOSPointer } from '../MacOSPointer/MacOSPointer';
 
 export interface MacbookChromeMockupProps extends NodeProps {
 	statusBarColor?: SignalValue<PossibleColor>;
+	isDevMode?: boolean;
 }
 
 export class MacbookChromeMockup extends Node {
@@ -36,6 +37,7 @@ export class MacbookChromeMockup extends Node {
 			...props,
 		});
 
+		const isDevmode = props?.isDevMode != null ? props.isDevMode : false;
 
 		// This is the ratio of the screen area;
 		// it was derived through trial-and-error.
@@ -59,7 +61,7 @@ export class MacbookChromeMockup extends Node {
 			height - totalFrameHeight];
 		const [screenPositionX, screenPositionY] = [3, -55];
 
-		const screen = <Rect fill={'white'} clip={true}
+		const screen = <Rect clip={true} fill={'white'}
 			position={[screenPositionX, screenPositionY]}
 			size={[screenSizeX, screenSizeY]} />;
 
@@ -85,9 +87,11 @@ export class MacbookChromeMockup extends Node {
 
 		this.children(screen)
 
-		this.add(<>
-			<Img src={macbookFrame} height={height} />
-		</>);
+		if (!isDevmode) {
+			this.add(<>
+				<Img src={macbookFrame} height={height} />
+			</>);
+		}
 	}
 
 

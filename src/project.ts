@@ -8,8 +8,8 @@ import './global.css';
 
 export default makeProject({
   scenes: [
-    //example,
+    example,
     //testTouchGestureIndicator
-    pointers
+    //pointers
   ],
 });

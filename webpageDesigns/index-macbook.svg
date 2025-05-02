@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="2643"
+   height="1705"
+   viewBox="0 0 699.29373 451.11458"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (e7c3feb, 2024-10-09)"
+   sodipodi:docname="index.svg"
+   xml:space="preserve"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"><sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="0.26206349"
+     inkscape:cx="1077.983"
+     inkscape:cy="1015.0212"
+     inkscape:window-width="1362"
+     inkscape:window-height="729"
+     inkscape:window-x="0"
+     inkscape:window-y="18"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1-5" /><defs
+     id="defs1" /><g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"><g
+       inkscape:label="hero-section"
+       id="layer1-5"
+       transform="matrix(3.278713,0,0,3.278713,37.280179,-232.59381)"><g
+         id="g10"
+         inkscape:label="primary-btn"><rect
+           style="fill:#eb7221;fill-opacity:1;stroke:none;stroke-width:0.0597967;stroke-linejoin:round;stroke-miterlimit:0;stroke-dasharray:none;paint-order:fill markers stroke"
+           id="rect2"
+           width="55.552887"
+           height="9.0575352"
+           x="126.03697"
+           y="174.54044"
+           ry="2.5418847" /></g><g
+         id="g11"
+         inkscape:label="secondary-btn"><rect
+           style="fill:none;fill-opacity:1;stroke:#242424;stroke-width:0.0754981;stroke-linejoin:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           id="rect3"
+           width="55.538376"
+           height="8.7561369"
+           x="126.50462"
+           y="186.6169"
+           ry="2.5420353" /></g></g></g><style
+     type="text/css"
+     id="style1">
+	.st0{fill:#000000;}
+</style></svg>
